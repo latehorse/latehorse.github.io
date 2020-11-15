@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://latehorse.github.io/"/>
-  <updated>2018-10-24T13:30:06.611Z</updated>
+  <updated>2020-11-15T04:11:11.703Z</updated>
   <id>https://latehorse.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>小步快跑的 APP 发布流程</title>
+    <link href="https://latehorse.github.io/2018/10/16/The%20app%20release%20process%20of%20Quick%20Run/"/>
+    <id>https://latehorse.github.io/2018/10/16/The app release process of Quick Run/</id>
+    <published>2018-10-16T05:59:43.000Z</published>
+    <updated>2020-11-15T04:11:11.703Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://user-images.githubusercontent.com/10498756/72778943-5ee25780-3c55-11ea-89a7-5165a4c9f33f.png" alt="image"></p><p>需求评审-技术评审-开发-联调-测试-回归，我们需要在一些分支上穿梭，达到高效率、高质量完成任务</p><h2 id="登记班车"><a href="#登记班车" class="headerlink" title="登记班车"></a>登记班车</h2><p>这个周期一般为 10PD，根据节假日顺延</p><p><img src="https://user-images.githubusercontent.com/10498756/72778952-673a9280-3c55-11ea-879d-ec6cc45b864a.png" alt="image"></p><p>比如接到一个新的 featrue，你需要开出一个新的分支，如 <code>feature/xx</code> 。</p><p>如果有 task 号，分支名称中可包括 task 号，若无，则用较清晰的英文表述。</p><p>后面，同学们各自驰骋在自己的分支上。</p><p>* 在 feature-a 测试结束后，A 同学需要合入班车，即将代码合入到 devlop 上<br>* B 同学的需求还在继续，需要将代码 rebase 到 develop 最新的那次提交<br>* B 继续开发直到测试结束，合入班车</p><blockquote><p>这个阶段，交付给 QA 的测试包，需要在分支上打好，配置是 staging，并告知相应 QA 测试</p></blockquote><h2 id="上班车"><a href="#上班车" class="headerlink" title="上班车"></a>上班车</h2><p>当登记到班车里所有的需求都 <strong>确认</strong> 完成后，我们会在 develop 分支上开出 release 分支，如 <code>release/7.2.0</code>。</p><p><img src="https://user-images.githubusercontent.com/10498756/72778967-73beeb00-3c55-11ea-92a5-265556db225a.png" alt="image"></p><p>这个阶段，可能有新的需求开始过来，开发需要做以下几件事情：</p><p>* 关注 bugly 上的问题<br>* 新的需求可能会上来<br>* 修复 QA 回归出的问题</p><blockquote><p>从这个阶段开始，需要打 production 包给 QA，若不确认问题是否修复，建议仍在 bugfix 分支上打包，验证 ok 后再合入 release 也可以</p></blockquote><p>后续 release 较为稳定后，定期会 merge 回 develop，保持 develop 的代码最新。</p><h2 id="内测"><a href="#内测" class="headerlink" title="内测"></a>内测</h2><p>是否需要提内测，等 QA 通知</p><p>QA 问题回归结束，需要打包提交到 testflight 上公测，公测需要 apple 审核。需要注意的是：关闭内购功能</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内测阶段依然可以改 bug，改的越多说明提测质量越低</span><br></pre></td></tr></table></figure></blockquote><h2 id="提审"><a href="#提审" class="headerlink" title="提审"></a>提审</h2><p>内测阶段的问题不会很多，结束后，QA 会通知打最新的 release 包，QA 的职责到此结束。开发需要将代码合入到 master，并打上相关 tag 号</p><p><img src="https://user-images.githubusercontent.com/10498756/72778981-7ae5f900-3c55-11ea-97f6-2ef09e4d4ec9.png" alt="image"></p><p>接着通知产品，告知版本号，产品根据这个去提审</p><blockquote><p>开发打包完成后，需要在大群里周知</p></blockquote><h2 id="发版流程"><a href="#发版流程" class="headerlink" title="发版流程"></a>发版流程</h2><p>开发阶段的每次打包，都需要周知到相关人员，最终的 release 包需要在大群周知。</p><ul><li>回归阶段打包通知 QA 测试即可</li><li>回归完毕后，QA 会通知开发打内测包，有 QA 提交内测审核（内测需关闭支付）</li><li>最终 QA 会通知 开发打提审包</li><li>开发操作完成后，由产品提审</li></ul><p><img src="https://user-images.githubusercontent.com/10498756/72778984-81747080-3c55-11ea-888a-f32b06f66510.png" alt="image"></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://tech.meituan.com/2019/01/10/traffic-git-branch-management.html">https://tech.meituan.com/2019/01/10/traffic-git-branch-management.html</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/10498756/72778943-5ee25780-3c55-11ea-89a7-5165a4c9f33f.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;需求评审-
+      
+    
+    </summary>
+    
+      <category term="开发流程" scheme="https://latehorse.github.io/categories/%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/"/>
+    
+    
+      <category term="移动端" scheme="https://latehorse.github.io/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>梦想虽晚，“码”不停蹄</title>
     <link href="https://latehorse.github.io/2018/05/16/dream-late-code-nostop/"/>
     <id>https://latehorse.github.io/2018/05/16/dream-late-code-nostop/</id>
     <published>2018-05-16T05:59:43.000Z</published>
-    <updated>2018-10-24T13:30:06.611Z</updated>
+    <updated>2018-10-24T13:30:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>以梦为马，不负韶华。</p><p>我羡慕他们的故事，佩服他们的成就，相信很多人会跟我一样为他们的成功喝彩，毕竟这都是些励志的典型，而我在默默呐喊的同时，还有种淡淡的甜蜜，小小的幸福感，因为我也选择了这条路，我会这条路上走很远，这是属于我们的故事，有他，有她，不知道有天会不会有我。</p><p>梦想很遥远，可我们愿马不停蹄的前行，为了梦想而奋斗总是痛苦的，又总是快乐的，我知道，可我来了，这种感觉很幸福。</p>]]></content>
     
